@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klasifikasi Spesies Kupu-kupu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Klasifikasi Spesies Kupu-kupu</h1>
+        <p class="description">
+            Unggah gambar kupu-kupu, kemudian sistem akan mengidentifikasi spesies
+            berdasarkan model MobileNetV2 yang telah dilatih sebelumnya
+        </p>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Prediksi Gambar</button>
+        </form>
+        {% if image_path %}
+        <div class="result">
+            <h2>Hasil Prediksi</h2>
+            <img src="{{ image_path }}" alt="Gambar Kupu-kupu">
+            <h3>{{ prediction }}</h3>
+            <p>Tingkat Keyakinan :<strong>{{ "%.2f"|format(confidence) }}%</strong></p>
+            <hr>
+            <p style="margin-top:15px;color:#777;font-size:14px;">Sistem klasifikasi ini menggunakan model Deep Learning MobileNetV2 yang telah dilatih pada dataset Butterfly Image Classification.</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
