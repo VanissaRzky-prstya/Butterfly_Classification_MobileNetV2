@@ -94,3 +94,6 @@ Butterfly_Classification_MobileNetV2
       ├── valid
       └── test
 ```
+# Notebook Pelatihan
+Notebook pelatihan model disertakan pada repository dengan nama:
+- UAS_KBL91.ipynb
